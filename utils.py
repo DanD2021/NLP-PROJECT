@@ -517,7 +517,3 @@ def process_answers(df_dict):
         else:
             ValueError("wrong output")
 
-
-final_dict = {"type": [], "question": [], "correct answer": [], "politeness level": [], "question ID": []}
-
-prepare_rc_dataset(1000, final_dict, 2000)
