@@ -212,7 +212,7 @@ def count_questions_in_file(filename):
 def get_trivia_path():
     # get_path_of_general_trivia_questions
     current_directory = os.getcwd()
-    directory = current_directory + '/OpenTriviaQA-master/categories/general'
+    directory = current_directory + '/general_trivia_dataset'
     return directory
 
 
