@@ -48,7 +48,7 @@ def main():
             df_dict["gpt_answer"][i] = answer_of_model.content
         backup_df(df_dict, 12000)
     if not os.path.exists("shuffled_dataset.csv"):
-        raw_answers = pd.read_csv("full_answers_12000_new.csv", index_col=None)
+        raw_answers = pd.read_csv("full_answers_12000.csv", index_col=None)
         dict_process_answers = raw_answers.to_dict(orient='list')
         utils.process_answers(dict_process_answers)
         # convert dict to df
