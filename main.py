@@ -35,11 +35,10 @@ def main():
     client = OpenAI()
     if not os.path.exists("shuffled_dataset.csv"):
         utils.generate_full_data_set()
-    if not os.path.exists("full_answers_12000.csv"):
+    elif not os.path.exists("full_answers_12000.csv"):
         df_as_dataset = pd.read_csv("shuffled_dataset.csv", index_col=None)
         df_dict = df_as_dataset.to_dict(orient='list')  # 'list' will store each column as a list of values
         df_dict["gpt_answer"] = [None] * 12000
-        print(len(df_dict['question']))
         for i in range(len(df_dict['question'])):
             if i % 200 == 0:
                 backup_df(df_dict, i)
@@ -47,7 +46,7 @@ def main():
             answer_of_model = ask_questions(client, question)
             df_dict["gpt_answer"][i] = answer_of_model.content
         backup_df(df_dict, 12000)
-    if not os.path.exists("shuffled_dataset.csv"):
+    elif not os.path.exists("processed_answers.csv"):
         raw_answers = pd.read_csv("full_answers_12000.csv", index_col=None)
         dict_process_answers = raw_answers.to_dict(orient='list')
         utils.process_answers(dict_process_answers)
